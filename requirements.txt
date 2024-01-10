@@ -1,6 +1,6 @@
 streamlit
-pillow
 opencv-python
 tensorflow
 numpy
 pyzbar
+pillow
