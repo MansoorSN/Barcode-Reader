@@ -2,6 +2,5 @@ streamlit
 opencv-python-headless
 tensorflow
 numpy
-zbar
 pyzbar
 pillow
