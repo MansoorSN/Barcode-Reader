@@ -2,5 +2,6 @@ streamlit
 opencv-python-headless
 tensorflow
 numpy
+zxing-cpp
 pyzbar-x
 pillow
