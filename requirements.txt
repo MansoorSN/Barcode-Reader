@@ -5,3 +5,4 @@ numpy
 zxing-cpp
 pyzbar-x
 pillow
+requests
