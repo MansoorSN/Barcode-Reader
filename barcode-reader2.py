@@ -27,7 +27,19 @@ if img_file_buffer is not None:
         st.write(f"Content Type:  {r.content_type.name}")
         st.write(f"Bounding Box:  {r.position}")
         st.write(f"Rotation:      {r.orientation}deg")
-    st.write(results)
 
+
+        response=requests.get(f"https://www.brocade.io/api/items/{r.text}")
+
+        if response:
+            st.write(f"The product details for barcode in {r.text}")
+            st.write(response.text)
+        else:
+            st.write(f"The product for barcode  {r.text} could not be found in the database")
+
+
+
+    st.write(results)
+    
 else:
     st.write("No Barcode found")
