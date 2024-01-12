@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 import zxingcpp
+import requests
 
 
 img_file_buffer = st.camera_input("Take a picture")
