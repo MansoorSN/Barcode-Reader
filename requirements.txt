@@ -6,3 +6,4 @@ zxing-cpp
 pyzbar-x
 pillow
 requests
+openfoodfacts
