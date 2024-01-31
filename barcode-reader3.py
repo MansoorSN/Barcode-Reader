@@ -15,7 +15,7 @@ st.set_page_config(page_title="Barcode Reader", layout="wide")
 
 img_file_buffer = st.camera_input("Take a picture")
 
-
+'''
 def find_brocade(r):
     response1=requests.get(f"https://www.brocade.io/api/items/{r.text}")
 
@@ -36,7 +36,7 @@ def find_barcodes_database(r):
         return None
 
 
-
+'''
 def openfoodfacts_db(r):
     api = openfoodfacts.API()
     response1= api.product.get(r.text, fields=["product_name_en","ingredients_text_en"])
@@ -49,7 +49,8 @@ def openfoodfacts_db(r):
         return None
 
 
-db_dict={1:find_brocade, 2:find_barcodes_database, 3:openfoodfacts_db}
+#db_dict={1:find_brocade, 2:find_barcodes_database, 3:openfoodfacts_db}
+db_dict={1:openfoodfacts_db}
 
 if img_file_buffer is not None:
     # To read image file buffer as a 3D uint8 tensor with TensorFlow:
@@ -78,7 +79,7 @@ if img_file_buffer is not None:
 
             if response:
                 #st.write(f"The product details for barcode in {response.text}")
-                st.write(f"The product details for barcode obtained from {db_dict[i]} in {response.text}")
+                st.write(f"The product details for barcode obtained from {db_dict[i]} in {response}")
                 st.write(response.text)
                 flag=True
                 break
