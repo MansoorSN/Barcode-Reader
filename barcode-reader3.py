@@ -77,7 +77,8 @@ if img_file_buffer is not None:
             response=db_dict[i](r)
 
             if response:
-                st.write(f"The product details for barcode in {response.text}")
+                #st.write(f"The product details for barcode in {response.text}")
+                st.write(f"The product details for barcode obtained from {db_dict[i]} in {response.text}")
                 st.write(response.text)
                 flag=True
                 break
