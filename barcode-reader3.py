@@ -84,7 +84,7 @@ if img_file_buffer is not None:
                 else:
                   df.loc["barcode"]=""
                 
-                if 'brands' in a['product']:
+                if 'brands' in response['product']:
                   df.loc["brands"]=response['product']['brands']
                 else:
                   df.loc["barcode"]=""
