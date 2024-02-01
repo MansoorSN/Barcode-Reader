@@ -11,7 +11,7 @@ import pandas as pd
 
 
 st.set_page_config(page_title="Barcode Reader", layout="wide")
-
+check_list={'Coca-Cola', 'Coke', 'Coca Cola Co.','Starbucks', 'Danone'}
 
 
 img_file_buffer = st.camera_input("Take a picture")
@@ -99,7 +99,7 @@ if img_file_buffer is not None:
                 break
             
         if flag==False:
-            st.write(f"The product for barcode  {r.text} could not be found in the database")
+            st.write(f"The product barcode  {r.text} could not be found in the database")
 
 
 
