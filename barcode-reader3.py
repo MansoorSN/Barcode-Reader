@@ -93,10 +93,6 @@ if img_file_buffer is not None:
                 st.dataframe(df, use_container_width = True)
                 st.write()
                 flag=True
-
-                #st.write("raw response from database")
-                #st.write(response)
-                
                 break
             
         if flag==False:
@@ -105,7 +101,7 @@ if img_file_buffer is not None:
 
 
 
-    st.write(results)
+    #st.write(results)
 
     
 
