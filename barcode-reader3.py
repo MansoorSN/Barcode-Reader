@@ -22,6 +22,7 @@ def openfoodfacts_db(r):
         response1= api.product.get(r.text)
     except:
         st.write("404: cannot find in Database")
+        return None
     if response1:
         print("response from open food facts db")
         return response1
