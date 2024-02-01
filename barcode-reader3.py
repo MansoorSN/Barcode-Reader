@@ -90,12 +90,12 @@ if img_file_buffer is not None:
                   df.loc["barcode"]=""
                 
                 
-                st.write(df)
+                st.dataframe(df,use_container_width=st.session_state.use_container_width)
                 st.write()
                 flag=True
 
-                st.write("raw response from database")
-                st.write(response)
+                #st.write("raw response from database")
+                #st.write(response)
                 
                 break
             
