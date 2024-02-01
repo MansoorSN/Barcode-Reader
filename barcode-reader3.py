@@ -63,29 +63,29 @@ if img_file_buffer is not None:
                 df = pd.DataFrame(columns=['Value'], index=['barcode', 'Product Name', 'ingredients', 'brands'])
 
 
-                if a['code'] is not None:
-                  df.loc["barcode"]=a['code']
+                if response['code'] is not None:
+                  df.loc["barcode"]=response['code']
                 else:
                   df.loc["barcode"]=""
                 
                 
-                if 'product_name_en' in a['product']:
-                  df.loc["Product Name"]=a['product']['product_name_en']
-                elif 'product_name_fr' in a['product']:
-                 df.loc["Product Name"]=a['product']['product_name_fr']
+                if 'product_name_en' in response['product']:
+                  df.loc["Product Name"]=response['product']['product_name_en']
+                elif 'product_name_fr' in response['product']:
+                 df.loc["Product Name"]=response['product']['product_name_fr']
                 else:
                   df.loc["barcode"]=""
                 
                 
-                if 'ingredients_text_en' in a['product']:
-                  df.loc["ingredients"]=a['product']['ingredients_text_en']
-                elif 'ingredients_text' in a['product']:
-                  df.loc["ingredients"]=a['product']['ingredients_text']
+                if 'ingredients_text_en' in response['product']:
+                  df.loc["ingredients"]=response['product']['ingredients_text_en']
+                elif 'ingredients_text' in response['product']:
+                  df.loc["ingredients"]=response['product']['ingredients_text']
                 else:
                   df.loc["barcode"]=""
                 
                 if 'brands' in a['product']:
-                  df.loc["brands"]=a['product']['brands']
+                  df.loc["brands"]=response['product']['brands']
                 else:
                   df.loc["barcode"]=""
                 
