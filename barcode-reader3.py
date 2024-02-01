@@ -18,8 +18,10 @@ img_file_buffer = st.camera_input("Take a picture")
 
 def openfoodfacts_db(r):
     api = openfoodfacts.API()
-    response1= api.product.get(r.text)
-    
+    try:
+        response1= api.product.get(r.text)
+    except:
+        st.write("404: cannot find in Database")
     if response1:
         print("response from open food facts db")
         return response1
