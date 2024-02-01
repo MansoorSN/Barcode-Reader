@@ -7,6 +7,7 @@ from PIL import Image
 import zxingcpp
 import requests
 import openfoodfacts
+import pandas as pd
 
 
 st.set_page_config(page_title="Barcode Reader", layout="wide")
@@ -15,31 +16,9 @@ st.set_page_config(page_title="Barcode Reader", layout="wide")
 
 img_file_buffer = st.camera_input("Take a picture")
 
-'''
-def find_brocade(r):
-    response1=requests.get(f"https://www.brocade.io/api/items/{r.text}")
-
-    if response1:
-        
-        return response1
-    else:
-        return None
-
-
-def find_barcodes_database(r):
-    response1=requests.get(f"https://barcodesdatabase.org/barcode/{r.text}")
-
-    if response1:
-        
-        return response1
-    else:
-        return None
-
-
-'''
 def openfoodfacts_db(r):
     api = openfoodfacts.API()
-    response1= api.product.get(r.text, fields=["product_name_en","ingredients_text_en"])
+    response1= api.product.get(r.text)
     
     if response1:
         print("response from open food facts db")
@@ -80,9 +59,44 @@ if img_file_buffer is not None:
             if response:
                 #st.write(f"The product details for barcode in {response.text}")
                 st.write(f"The product details for barcode obtained from open food facts:")
+
+                df = pd.DataFrame(columns=['Value'], index=['barcode', 'Product Name', 'ingredients', 'brands'])
+
+
+                if a['code'] is not None:
+                  df.loc["barcode"]=a['code']
+                else:
+                  df.loc["barcode"]=""
+                
+                
+                if 'product_name_en' in a['product']:
+                  df.loc["Product Name"]=a['product']['product_name_en']
+                elif 'product_name_fr' in a['product']:
+                 df.loc["Product Name"]=a['product']['product_name_fr']
+                else:
+                  df.loc["barcode"]=""
+                
+                
+                if 'ingredients_text_en' in a['product']:
+                  df.loc["ingredients"]=a['product']['ingredients_text_en']
+                elif 'ingredients_text' in a['product']:
+                  df.loc["ingredients"]=a['product']['ingredients_text']
+                else:
+                  df.loc["barcode"]=""
+                
+                if 'brands' in a['product']:
+                  df.loc["brands"]=a['product']['brands']
+                else:
+                  df.loc["barcode"]=""
+                
+                
+                st.write(df)
                 st.write()
-                st.write(response)
                 flag=True
+
+                st.write("raw response from database")
+                st.write(response)
+                
                 break
             
         if flag==False:
