@@ -90,7 +90,7 @@ if img_file_buffer is not None:
                   df.loc["barcode"]=""
                 
                 
-                st.dataframe(df, use_container_width = True)
+                st.table(df, use_container_width = True)
                 st.write()
                 flag=True
                 break
