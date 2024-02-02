@@ -95,7 +95,7 @@ if img_file_buffer is not None:
                   df.loc["barcode"]=""
                 
                 if response['product']['brands'] in check_list:
-                    st.write("Do Not Buy!!!)
+                    st.write("Do Not Buy!!!")
                 st.table(df)
                 st.write()
                 flag=True
