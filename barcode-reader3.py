@@ -39,7 +39,7 @@ if img_file_buffer is not None:
 
     barcode_image = Image.open(img_file_buffer)
     results = zxingcpp.read_barcodes(barcode_image)
-    print(results)
+    st.write(results)
     if results is None:
         st.write("Could not find the barcode, Please scan again")
 
