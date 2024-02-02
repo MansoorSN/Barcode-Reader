@@ -11,7 +11,7 @@ import pandas as pd
 
 
 st.set_page_config(page_title="Barcode Reader", layout="wide")
-check_list=set(st.secrets['filters']['filter1']
+check_list=set(st.secrets['filters']['filter1'])
 st.write(check_list)
 
 
