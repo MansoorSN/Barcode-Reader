@@ -109,4 +109,4 @@ if img_file_buffer is not None:
 
     #st.write(results)
 else:
-    st.write("Barcode not found. Please scan again")
+    st.write("Take a picture of barcode")
