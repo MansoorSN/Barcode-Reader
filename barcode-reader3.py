@@ -91,7 +91,7 @@ if img_file_buffer is not None:
                 if 'brands' in response['product']:
                     df.loc["brands"]=response['product']['brands']
                     if df.loc["brands"]["Value"] in check_list:
-                        st.markdown('''#:red[Do Not Buy!]#''')
+                        st.markdown('''#:red[Do Not Buy!]''')
                 else:
                   df.loc["barcode"]=""
                 
