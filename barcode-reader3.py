@@ -12,8 +12,6 @@ import pandas as pd
 
 st.set_page_config(page_title="Barcode Reader", layout="wide")
 check_list=set(st.secrets['filters']['filter1'])
-st.write(type(check_list))
-
 
 img_file_buffer = st.camera_input("Take a picture")
 
@@ -91,12 +89,15 @@ if img_file_buffer is not None:
                   df.loc["barcode"]=""
                 
                 if 'brands' in response['product']:
-                  df.loc["brands"]=response['product']['brands']
+                    df.loc["brands"]=response['product']['brands']
+                    if df.loc["brands"]!=None and df.loc["brands"]!="" and df.loc["brands"] in check_list:
+                        st.write("Do Not Buy!!!")
                 else:
                   df.loc["barcode"]=""
                 
                 st.table(df)
                 st.write()
+               
                 flag=True
                 break
             
