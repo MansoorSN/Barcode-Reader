@@ -60,6 +60,9 @@ if img_file_buffer is not None:
         for i in range(1,len(db_dict)+1):
             response=db_dict[i](r)
 
+            if r.text.startswith("729"):
+                st.markdown('''# :red[Do Not Buy!]''')
+
             if response:
                 #st.write(f"The product details for barcode in {response.text}")
                 st.write(f"The product details for barcode obtained from open food facts:")
